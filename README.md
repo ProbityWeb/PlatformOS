@@ -57,4 +57,4 @@ To view the content the url would be https://mysite.com/admin/starter/blog
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
