@@ -1,0 +1,49 @@
+{% if total_pages > 1 -%}
+    {% assign current_page = customizations.current_page -%}
+    {% assign current_page_minus1 = current_page | minus: 1 -%}
+    {% assign current_page_plus1 = current_page | plus: 1 -%}
+    {% assign total_pages_minus1 = total_pages | minus: 1 -%}
+    {% assign total_pages_minus2 = total_pages | minus: 2 -%}
+
+    <nav aria-label="Pagination">
+        <ul class="pagination">
+            
+            {% if customizations.has_previous_page %}<li class="pagination-previous"><a href="{{path_directory}}/0/{{current_page_minus1}}{{path_form}}">Previous <span class="show-for-sr">page</span></a></li>{% endif -%}
+
+            {% if current_page <= 6 -%}
+                {% assign start_num = 1 -%}
+            {% else -%}
+                {% assign start_num = current_page | minus: 4 -%}
+                <li><a href="{{path_directory}}/0/1{{path_form}}" aria-label="Page 1">1</a></li>
+                {% if start_num == 3 -%}
+                <li><a href="{{path_directory}}/0/2{{path_form}}" aria-label="Page 2">2</a></li>
+                {% elsif start_num != 2 -%}
+                <li class="ellipsis" aria-hidden="true"></li>
+                {% endif -%}
+            {% endif -%}
+
+            {% assign end_num = start_num | plus: 8 -%}
+
+            {% if end_num > total_pages -%}
+                {% assign end_num = total_pages -%}
+            {% endif -%}
+            {% for page_num in (start_num..end_num) %}
+                {% if current_page == page_num %}
+                <li class="current show"><span class="show-for-sr">You're on page</span> {{page_num}}</a></li>
+                {% else %}
+                <li><a href="{{path_directory}}/0/{{page_num}}{{path_form}}">{{page_num}}</a></li>
+                {% endif -%}
+            {% endfor %}
+            {% if end_num != total_pages -%}
+                {% if end_num == total_pages_minus2 -%}
+                <li><a href="{{path_directory}}/0/{{total_pages_minus1}}{{path_form}}" aria-label="Page {{total_pages_minus1}}">{{total_pages_minus1}}</a></li>
+                {% elsif end_num != total_pages_minus1 -%}
+                <li class="ellipsis" aria-hidden="true"></li>
+                {% endif -%}
+                <li><a href="{{path_directory}}/0/{{total_pages}}{{path_form}}" aria-label="Page {{total_pages}}">{{total_pages}}</a></li>
+            {% endif -%}
+
+            {% if customizations.has_next_page %}<li class="pagination-next"><a href="{{path_directory}}/0/{{current_page_plus1}}{{path_form}}" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>{% endif -%}
+        </ul>
+    </nav>
+{% endif -%}

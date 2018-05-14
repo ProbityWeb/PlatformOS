@@ -1,0 +1,125 @@
+/* TOP BAR */
+.top-bar, .top-bar ul.menu  {
+  background: #292929;
+  padding: 0;
+}
+.top-bar .logo {
+    margin: 0 20px;
+}
+.top-bar .logo a {
+    padding: 0;
+}
+.top-bar li a {
+    color: #e6e6e6;
+    font-size: 14px;
+    padding: 0.75rem 1rem;
+}
+
+/* SIDE BAR (left) */
+.menu-control {
+  padding: 2.75rem 1rem 1rem 1rem;
+  color: #292929;
+}
+.menu-expand .menu-control-open, .menu-shrink .menu-control-close,.menu-shrink .menu > li span {
+  display: none;
+}
+.menu-shrink .menu-control-open {
+  display: block;
+}
+.menu-shrink .off-canvas.position-left {
+  width: 50px;
+}
+.position-left.is-transition-push {
+    box-shadow: none;
+}
+.list-group {
+  margin: 0 0 1rem 0;
+  border: 1px solid #e6e6e6;
+  border-radius: 0;
+  background: #fefefe;
+  box-shadow: none;
+  overflow: hidden;
+  color: #0a0a0a;
+  padding: 0;
+  list-style-type: none;
+}
+.list-icon {
+  margin-right: 0.75rem;
+}
+.list-group > :last-child {
+  margin-bottom: 0;
+}
+.list-group > li {
+  border-bottom: 1px solid #e6e6e6;
+}
+.list-group li a {
+  font-size: 1rem;
+  padding: 1.25rem 1rem;
+  display: inline-block;
+  width: 100%;
+  color: #292929;
+  border-bottom: 0;
+}
+.list-group li ul a {
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem 0.5rem 3.2rem;
+}
+.list-group li ul li:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 1rem;
+}
+.list-group li a:hover {
+  background-color: #e6e6e6;
+}
+
+/* MAIN */
+.off-canvas-content {
+  min-height: 100vh;
+}
+.off-canvas-content .grid-container {
+  padding: 2rem .5rem;
+  margin-left: 0;
+}
+.table-cases tbody tr td a {
+  color: #0a0a0a;
+ }
+
+ @media screen and (min-width: 40em) {
+
+  .menu-shrink .off-canvas-content {
+      margin-left: 50px !important;
+  }
+  .off-canvas-content .grid-container {
+    padding: 2rem;
+  }
+  .container-help {
+    margin-top: 2rem;
+  }
+}
+
+/* TABLES */
+table.row-clickable tbody tr td {
+  padding: 0;
+}
+table tbody td, table tbody th {
+  padding: 0;
+}
+table a {
+  display: block;
+  color: #0a0a0a;
+  padding: .5rem .625rem .625rem;
+}
+th {
+  text-align: left;
+}
+
+/* CASES */
+.profile-default {
+  font-size: 6rem;
+}
+
+
+
+
+  

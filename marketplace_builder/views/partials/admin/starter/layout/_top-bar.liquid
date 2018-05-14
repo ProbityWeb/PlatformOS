@@ -1,0 +1,18 @@
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="menu">
+      <li class="logo">
+        <a href="{{site.brand.href}}"><img src="{{site.brand.img}}" alt="{{site.brand.name}}"></a>
+      </li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+    {% for item in topbar -%}
+      <li>
+          <a {% if item.toggle %}href="#" data-toggle="offCanvas{{item.toggle | capitalize}}"{% else %} href="{{item.href}}"{% endif %}>{% if item.icon -%}<i class="fas {{item.icon}} list-icon"></i> {% endif %}<span>{{item.title | default: fullname}}</span></a>
+      </li>
+    {% endfor -%}
+    </ul>
+  </div>
+</div>

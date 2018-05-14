@@ -1,0 +1,49 @@
+{% assign per_page = 20 -%}
+{% assign path_start = '/admin/starter/' -%}
+{% capture config %}{% include 'admin/starter/settings/config' -%}{% endcapture -%}
+{% assign site = config | to_hash -%}
+{% assign sidebar = site.sidebar -%}
+{% assign topbar = site.topbar -%}
+{% query_graph current_user, result_name: current -%}
+{% capture fullname %}{{current.current_user.first_name}} {{current.current_user.last_name}} {% endcapture -%}
+{% assign current_directory = context.params.slug3 -%}
+{% assign path_directory = path_start | append: current_directory -%}
+{% if current_directory -%}
+    {% assign path_include = path_directory | append: '/index' -%}
+    {% assign page_title = current_directory | split: '-' | join: ' ' | capitalize -%}
+{% else -%}
+    {% assign path_directory = site.landing-url -%}
+    {% assign path_include = site.landing-url | append: '/index' -%}
+    {% assign page_title = site.name -%}
+{% endif -%}
+{% assign path_include_detail = path_directory | append: '/detail' -%}
+{% assign path_include_top = path_directory | append: '/top' -%}
+{% assign path_include_right = path_directory | append: '/right' -%}
+{% assign path_include_bottom = path_directory | append: '/bottom' -%}
+{% assign path_include_edit = path_directory | append: '/edit' -%}
+{% assign path_include_new = path_directory | append: '/new' -%}
+{% if params.slugs %}
+    {% assign slug_size = params.slugs | split: '/' | size -%}
+    {% case slug_size %}
+        {% when 1 %}
+            {% assign url_template = path_directory | append: '/{id}' -%}
+        {% when 2 %}
+            {% assign url_template = path_directory | append: '/{id}/{page}' -%}
+        {% else %}
+            {% assign url_template = path_directory | append: '/{id}/{page}/{form}' -%}
+    {% endcase %}
+    {% assign path_full = current_full_path | extract_url_params: url_template -%}
+{% endif %}
+{% assign current_per_page = params.n | default: per_page | plus: 0 -%}
+{% assign current_page = path_full.page | default: 1 -%}
+{% assign current_id = path_full.id | default: "0" -%}
+{% assign current_form = path_full.form | default: '' -%}
+{% assign path_page = path_start | append: current_page | append: '/' -%}
+{% capture path_case_form %}/{{current_id}}/{{current_form}}{% endcapture -%}
+{% capture content -%}
+    {% include "admin/starter/layout/off-canvas-content" %}
+    {% include "admin/starter/layout/off-canvas-top" %}
+    {% include "admin/starter/layout/off-canvas-right" %}
+    {% include "admin/starter/layout/off-canvas-bottom" %}
+    {% include "admin/starter/layout/off-canvas-left" %}
+{% endcapture -%}

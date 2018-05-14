@@ -1,0 +1,24 @@
+<div class="off-canvas-left off-canvas position-left reveal-for-medium off-canvas-absolute" id="offCanvasLeft" data-off-canvas>
+    <div class="menu-control text-right show-for-medium">
+        <div class="menu-control-close">
+            <button type="button" toggle-menu-width><i class="fas fa-angle-double-left"></i></button>
+        </div>
+        <div class="menu-control-open">
+            <button type="button" toggle-menu-width><i class="fas fa-angle-double-right"></i></button>
+        </div>
+    </div>
+    <ul class="menu vertical list-group" data-accordion-menu data-multi-open="false" data-slide-speed="150">
+    {% for item in sidebar -%}
+        <li>
+            <a href="{{item.href}}"><i class="fas {{item.icon}} list-icon"></i> <span>{{item.title}}</span></a>
+            {% if item.items %}
+                <ul class="menu vertical">
+                {% for subitem in item.items -%}
+                    <li><a href="{{subitem.href}}">{{subitem.title}}</a></li>
+                {% endfor -%}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor -%}
+    </ul>
+</div>

@@ -1,0 +1,12 @@
+{%- include 'admin/starter/settings/init' -%}
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>{% include "admin/starter/layout/head" %}</head>
+  <body>
+    {% include "admin/starter/layout/top-bar" %}
+    <div class="off-canvas-wrapper menu-expand">
+      {{content | html_safe}}
+    </div>
+    {% include "admin/starter/layout/foot" %}
+  </body>
+</html>
